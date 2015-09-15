@@ -33,7 +33,6 @@ public:
 
 class CMD_Set: public Command {
 public:
-    CMD_Set() {}
     CMD_Set(const std::string& key, uint32_t value): \
             _key(key),
             _value(value),
@@ -55,15 +54,10 @@ public:
         }
         return _undo_cmd->execute(db);
     }
-
-    virtual ~CMD_Set() {
-        delete _undo_cmd;
-    }
-
 private:
     std::string _key;
     uint32_t _value;
-    Command* _undo_cmd;
+    std::shared_ptr<Command> _undo_cmd;
 };
 
 class CMD_Get: public Command {
@@ -140,7 +134,7 @@ public:
     }
 private:
     std::string _key;
-    Command* _undo_cmd;
+    std::shared_ptr<Command> _undo_cmd;
 };
 
 class CMD_Dummy: public Command {
