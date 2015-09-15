@@ -27,5 +27,5 @@ Here is the time complexity for all kinds of commands:
 * COMMIT - O(k)
 * ROLLBACK - O(k)
 
-Here `k` is the commands between `BEGIN` and `COMMIT` or `BEGIN` and `ROLLBACK`.
+Here `k` is the number of commands between `BEGIN` and `COMMIT` or `BEGIN` and `ROLLBACK`.
 
